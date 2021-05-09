@@ -1,11 +1,11 @@
-package za.co.ssquared.assignment.repository;
+package com.owen.assignment.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import za.co.ssquared.assignment.model.Route;
+import com.owen.assignment.model.Route;
 
 @Repository
 public interface RouteRepository extends JpaRepository<Route, Integer> {

@@ -1,8 +1,8 @@
-package za.co.ssquared.assignment.service;
+package com.owen.assignment.service;
 
 import java.util.List;
 
-import za.co.ssquared.assignment.model.Planet;
+import com.owen.assignment.model.Planet;
 
 /**
  * 

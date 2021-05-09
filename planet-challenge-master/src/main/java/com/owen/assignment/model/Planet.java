@@ -1,4 +1,4 @@
-package za.co.ssquared.assignment.model;
+package com.owen.assignment.model;
 
 import java.util.Objects;
 

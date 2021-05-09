@@ -1,12 +1,12 @@
-package za.co.ssquared.assignment.service;
+package com.owen.assignment.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import za.co.ssquared.assignment.model.Route;
-import za.co.ssquared.assignment.repository.RouteRepository;
+import com.owen.assignment.model.Route;
+import com.owen.assignment.repository.RouteRepository;
 
 /**
  * 

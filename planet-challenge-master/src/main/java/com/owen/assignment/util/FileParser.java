@@ -1,4 +1,4 @@
-package za.co.ssquared.assignment.util;
+package com.owen.assignment.util;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.CSVParser;
@@ -8,8 +8,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvException;
-
-import za.co.ssquared.assignment.model.Planet;
+import com.owen.assignment.model.Planet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

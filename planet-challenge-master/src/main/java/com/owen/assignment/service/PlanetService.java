@@ -1,12 +1,12 @@
-package za.co.ssquared.assignment.service;
-
-import za.co.ssquared.assignment.model.Planet;
-import za.co.ssquared.assignment.repository.PlanetRepository;
+package com.owen.assignment.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.owen.assignment.model.Planet;
+import com.owen.assignment.repository.PlanetRepository;
 
 /**
  * 

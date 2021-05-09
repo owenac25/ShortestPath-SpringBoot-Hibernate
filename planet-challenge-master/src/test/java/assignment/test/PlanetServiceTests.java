@@ -1,4 +1,4 @@
-package za.co.ssquared.assignment.test;
+package assignment.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import za.co.ssquared.assignment.model.Planet;
-import za.co.ssquared.assignment.service.IPlanetService;
-import za.co.ssquared.assignment.service.PlanetService;
+import com.owen.assignment.model.Planet;
+import com.owen.assignment.service.IPlanetService;
+import com.owen.assignment.service.PlanetService;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

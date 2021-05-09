@@ -1,4 +1,4 @@
-package za.co.ssquared.assignment.exceptions;
+package com.owen.assignment.exceptions;
  
 /**
   * 

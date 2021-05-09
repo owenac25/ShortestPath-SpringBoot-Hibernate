@@ -1,13 +1,4 @@
-package za.co.ssquared.assignment.controller;
-
-import za.co.ssquared.assignment.service.IPlanetService;
-import za.co.ssquared.assignment.service.IRouteService;
-
-import za.co.ssquared.assignment.util.FileParser;
-import za.co.ssquared.assignment.util.PathSolver;
-import za.co.ssquared.assignment.exceptions.PlanetNotFoundException;
-import za.co.ssquared.assignment.model.Planet;
-import za.co.ssquared.assignment.model.Route;
+package com.owen.assignment.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,6 +25,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.owen.assignment.exceptions.PlanetNotFoundException;
+import com.owen.assignment.model.Planet;
+import com.owen.assignment.model.Route;
+import com.owen.assignment.service.IPlanetService;
+import com.owen.assignment.service.IRouteService;
+import com.owen.assignment.util.FileParser;
+import com.owen.assignment.util.PathSolver;
 
 /**
  * 
@@ -151,7 +150,7 @@ public class PlanetController {
 			return "This Planet does not exist";
 		}
 		List<String> path = new ArrayList<>();
-		new PathSolver(planetService,routeService);
+		PathSolver.solvePaths(planetService,routeService);
 		for(Planet planet=planetService.findByPlanetNode(toPlanet);planet!=null;planet=planet.getPrevious()){
 			path.add(planet.getPlanetNode());
 		}

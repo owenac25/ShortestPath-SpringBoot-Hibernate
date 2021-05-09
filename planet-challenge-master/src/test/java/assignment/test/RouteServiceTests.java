@@ -1,34 +1,45 @@
-package za.co.ssquared.assignment.test;
-
+package assignment.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import za.co.ssquared.assignment.model.Route;
-import za.co.ssquared.assignment.repository.RouteRepository;
+import com.owen.assignment.model.Route;
+import com.owen.assignment.service.IRouteService;
+import com.owen.assignment.service.RouteService;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class RouteRepoTests {
+public class RouteServiceTests {
 
-    @Autowired
-    private RouteRepository routeRepository;
-
-    @Test
+    @TestConfiguration
+    static class RouteServiceTestContextConfiguration {
+ 
+        @Bean
+        public IRouteService routeService() {
+            return new RouteService();
+        }
+    }
+    
+	@Autowired
+    private IRouteService routeService;  
+	
+	@Test
     public void testSaveRoute() {
 
     	Route route = new Route(100, "T1", "T2", 100);
-    	routeRepository.save(route);
-    	Route route2 = routeRepository.findById(100).orElse(null);
-        assertNotNull(route);
+    	routeService.save(route);
+    	Route route2 = routeService.findByRoute(100);
+        assertNotNull(route2);
         assertEquals(route2.getRoute(), route.getRoute());
         assertEquals(route2.getPlanetOrigin(), route.getPlanetOrigin());
         assertEquals(route2.getPlanetDestination(), route.getPlanetDestination());
@@ -39,28 +50,28 @@ public class RouteRepoTests {
     public void testPutRoute() {
 
         Route route = new Route(100, "T1", "T2", 100);
-        routeRepository.save(route);
-        Route route2 = routeRepository.findById(100).orElse(null);
+        routeService.save(route);
+        Route route2 = routeService.findByRoute(100);
         assertNotNull(route2);
         route2.setDistance(200);
-        routeRepository.save(route2);
-        Route updatedRoute = routeRepository.findById(100).orElse(null);
+        routeService.save(route2);
+        Route updatedRoute = routeService.findByRoute(100);
         assertThat(updatedRoute.getDistance()).isEqualTo(200);
     }
 
     @Test
     public void findAllRoutes() {
         Route route = new Route(100, "T1", "T2", 100);
-        routeRepository.save(route);
-        assertNotNull(routeRepository.findAll());
+        routeService.save(route);
+        assertNotNull(routeService.findAll());
     }
     
     @Test
     public void deleteById() {
     	Route route = new Route(100, "T1", "T2", 100);
-    	routeRepository.save(route);
-        assertNotNull(routeRepository.findById(100).orElse(null));
-        routeRepository.deleteById(100);
-        assertTrue(routeRepository.findById(100).isEmpty());
+    	routeService.save(route);
+        assertNotNull(routeService.findByRoute(100));
+        routeService.deleteById(100);
+        assertNull(routeService.findByRoute(100));
     }
 }

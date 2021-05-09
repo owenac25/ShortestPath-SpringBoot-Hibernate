@@ -1,4 +1,4 @@
-package za.co.ssquared.assignment.util;
+package com.owen.assignment.util;
 
 import java.util.Iterator;
 import java.util.List;
@@ -8,10 +8,10 @@ import java.util.PriorityQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import za.co.ssquared.assignment.model.Planet;
-import za.co.ssquared.assignment.model.Route;
-import za.co.ssquared.assignment.service.IPlanetService;
-import za.co.ssquared.assignment.service.IRouteService;
+import com.owen.assignment.model.Planet;
+import com.owen.assignment.model.Route;
+import com.owen.assignment.service.IPlanetService;
+import com.owen.assignment.service.IRouteService;
 
 /**
  * Utility class for determining the shortest path between Earth and a destination planet
@@ -21,15 +21,22 @@ public class PathSolver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PathSolver.class);
     
+    private static PathSolver pathSolverInstance = null;
 	private static IPlanetService planetService;
 	private static IRouteService routeService;
+	
+	public static void solvePaths(IPlanetService planetServ, IRouteService routeServ) throws Exception {
+		if (pathSolverInstance == null) {
+			pathSolverInstance = new PathSolver(planetServ, routeServ);
+		}		
+	}
 	
 	/**
 	 * Use of Constructor Injection to ensure Services are available
 	 * Also ensures start planet will always be Earth
 	 * Constructor calls djikstra implementation 
 	 */
-	public PathSolver(IPlanetService planetServ, IRouteService routeServ) throws Exception {
+	private PathSolver(IPlanetService planetServ, IRouteService routeServ) throws Exception {
 		planetService = planetServ;
 		routeService = routeServ;
 		djikstraPath(planetServ.findByPlanetNode("A"));

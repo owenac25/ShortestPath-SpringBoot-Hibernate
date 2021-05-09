@@ -1,4 +1,4 @@
-package za.co.ssquared.assignment.model;
+package com.owen.assignment.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
